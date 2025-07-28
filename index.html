@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stock Tools: Profit & Target Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TradingView Chart -->
+  <div class="chart-container">
+    <h2>Live SOXL Stock Chart</h2>
+    <div id="tradingview-widget"></div>
+  </div>
+
+  <!-- Profit Calculator -->
+  <div class="container">
+    <h1>Stock Profit Calculator</h1>
+    <label>Stock Symbol: <input type="text" id="stockSymbol" value="SOXL" /></label>
+    <label>Shares: <input type="number" id="shares" /></label>
+    <label>Entry Price ($): <input type="number" id="entryPrice" step="0.01" /></label>
+    <label>Exit Price ($): <input type="number" id="exitPrice" step="0.01" /></label>
+    <button onclick="calculateProfit()">Calculate Profit</button>
+    <div id="profitOutput"></div>
+  </div>
+
+  <!-- Target Selling Price Calculator -->
+  <div class="container">
+    <h1>Target Price Calculator</h1>
+    <label>Entry Price ($): <input type="number" id="targetEntry" step="0.01" /></label>
+    <label>Desired Profit (%): <input type="number" id="desiredProfit" step="0.1" /></label>
+    <button onclick="calculateTargetPrice()">Calculate Target Price</button>
+    <div id="targetOutput"></div>
+  </div>
+
+  <!-- JavaScript files -->
+  <script src="app.js"></script>
+  <script src="https://s3.tradingview.com/tv.js"></script>
+  <script>
+    new TradingView.widget({
+      "width": "100%",
+      "height": 500,
+      "symbol": "NASDAQ:SOXL",
+      "interval": "D",
+      "timezone": "Etc/UTC",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#f1f3f6",
+      "enable_publishing": false,
+      "hide_side_toolbar": false,
+      "allow_symbol_change": true,
+      "container_id": "tradingview-widget"
+    });
+  </script>
+
+</body>
+</html>
+
